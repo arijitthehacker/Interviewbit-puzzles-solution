@@ -15,3 +15,29 @@ Consider door number 56, monkeys will visit it for every divisor it has. So 56 h
 ## Answer:
  10
 
+function openDoors() {
+  let doors = {};
+  for (let i = 1; i <= 100; i++) {
+    doors[i] = false;
+  }
+
+  for (let j = 1; j <= 100; j++) {
+    let bound = j;
+    while (bound <= 100) {
+      if (doors[bound] === false) {
+        doors[bound] = true;
+      } else {
+        doors[bound] = false;
+      }
+      bound = bound + j;
+    }
+  }
+  let arr = [];
+  for (let i in doors) {
+    if (doors[i] === true) {
+      arr.push(i);
+    }
+  }
+  return arr;
+}
+openDoors();
